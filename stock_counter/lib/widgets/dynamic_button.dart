@@ -14,22 +14,21 @@ class DynamicButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(
-          horizontal: size.width * 0.35, // Dynamic width padding
-          vertical: size.height * 0.02, // Dynamic height padding
+    return SizedBox(
+      height: size.width * 0.12, // Dynamic height
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFFEA4848),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
         ),
-        backgroundColor: const Color(0xFFEA4848),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+        child: Text(
+          label,
+          style: TextStyle(fontSize: size.width * 0.04, color: Colors.white),
+          // Dynamic font size
         ),
-      ),
-      child: Text(
-        label,
-        style: TextStyle(fontSize: size.width * 0.05, color: Colors.white),
-        // Dynamic font size
       ),
     );
   }
