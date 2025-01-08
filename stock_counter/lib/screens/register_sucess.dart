@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stock_counter/screens/signin.dart';
 import 'package:stock_counter/widgets/dynamic_button.dart';
 
 class RegisterSuccess extends StatelessWidget {
@@ -60,7 +61,14 @@ class RegisterSuccess extends StatelessWidget {
                     Expanded(
                       child: DynamicButton(
                         label: 'Continue',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Signin(),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],

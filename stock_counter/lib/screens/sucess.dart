@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stock_counter/screens/personal_info.dart';
 import 'package:stock_counter/widgets/dynamic_button.dart';
 
 class Sucess extends StatelessWidget {
@@ -37,9 +38,14 @@ class Sucess extends StatelessWidget {
                   children: [
                     Expanded(
                       child: DynamicButton(
-                        label: "Continue",
-                        onPressed: () {},
-                      ),
+                          label: "Continue",
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const PersonalInfo()));
+                          }),
                     )
                   ],
                 )

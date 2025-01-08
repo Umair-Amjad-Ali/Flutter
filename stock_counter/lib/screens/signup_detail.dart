@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stock_counter/screens/register_sucess.dart';
 
 class SignupDetail extends StatefulWidget {
   const SignupDetail({super.key});
@@ -50,17 +51,6 @@ class _SignupDetailState extends State<SignupDetail> {
           ? 'Please enter your password'
           : null;
     });
-
-    // Check if all fields are valid
-    // if (_formKey.currentState?.validate() ?? false) {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     const SnackBar(content: Text('Form is valid!')),
-    //   );
-    // } else {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     const SnackBar(content: Text('Please complete all fields correctly.')),
-    //   );
-    // }
   }
 
   // Method to validate email
@@ -149,7 +139,7 @@ class _SignupDetailState extends State<SignupDetail> {
                       Text(
                         "Check it if you agree to our Terms\n& Conditions and Privacy Policy",
                         style: TextStyle(
-                          fontSize: size.width * 0.044,
+                          fontSize: MediaQuery.of(context).size.width * 0.040,
                           fontWeight: FontWeight.normal,
                           color: Colors.grey.shade600,
                         ),
@@ -162,7 +152,20 @@ class _SignupDetailState extends State<SignupDetail> {
 
                   // Signup Button
                   ElevatedButton(
-                    onPressed: _submitForm,
+                    onPressed: () {
+                      _submitForm();
+                      if (_formKey.currentState!.validate() &&
+                          _nameError == null &&
+                          _phoneError == null &&
+                          _emailError == null &&
+                          _passwordError == null) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RegisterSuccess()),
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
                         vertical: size.height * 0.02,
@@ -178,6 +181,7 @@ class _SignupDetailState extends State<SignupDetail> {
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
+
                   const SizedBox(height: 15),
 
                   // Line with "OR"

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stock_counter/screens/signupdetails.dart';
+import 'package:stock_counter/screens/signup_detail.dart';
 import 'package:stock_counter/widgets/dynamic_button.dart';
 
 class Role extends StatelessWidget {
@@ -38,7 +38,7 @@ class Role extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Signupdetails()));
+                                  builder: (context) => const SignupDetail()));
                         },
                       ),
                     ),
@@ -55,7 +55,7 @@ class Role extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Signupdetails()));
+                                  builder: (context) => const SignupDetail()));
                         },
                       ),
                     ),

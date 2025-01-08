@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stock_counter/widgets/dynamic_button.dart';
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({super.key});
@@ -53,7 +54,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
           children: [
             // Custom AppBar
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -61,7 +62,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   Container(
                     padding: const EdgeInsets.all(4),
                     decoration: const BoxDecoration(
-                      color: Colors.red,
+                      color: Color(0xFFEA4848),
                       shape: BoxShape.rectangle,
                     ),
                     child: const Icon(Icons.menu, color: Colors.white),
@@ -71,7 +72,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: Color(0xFFEA4848),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: const Text(
@@ -87,7 +88,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: const BoxDecoration(
-                      color: Colors.red,
+                      color: Color(0xFFEA4848),
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(Icons.person, color: Colors.white),
@@ -119,13 +120,13 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   right: 0,
                   child: Icon(
                     Icons.edit,
-                    size: 30,
+                    size: 25,
                     color: Colors.white,
                   ),
                 ),
               ],
             ),
-
+            SizedBox(height: 20),
             // Form Fields
             Expanded(
               child: SingleChildScrollView(
@@ -200,25 +201,19 @@ class _PersonalInfoState extends State<PersonalInfo> {
                         },
                       ),
                       const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            // Save or update the information
-                            print('Details updated!');
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 40, vertical: 12),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                        child: const Text(
-                          'Edit Details',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                              child: DynamicButton(
+                                  label: "Edit Details",
+                                  onPressed: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      // Save or update the information
+                                      print('Details updated!');
+                                    }
+                                  }))
+                        ],
                       ),
                     ],
                   ),
