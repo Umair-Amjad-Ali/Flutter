@@ -5,6 +5,7 @@ class DropdownCard extends StatelessWidget {
   final List<String> items;
   final ValueChanged<String?> onChanged;
   final String hintText;
+  final String? labelText; // Optional text to display inside the card
 
   const DropdownCard({
     super.key,
@@ -12,6 +13,7 @@ class DropdownCard extends StatelessWidget {
     required this.items,
     required this.onChanged,
     required this.hintText,
+    this.labelText, // Optional parameter
   });
 
   @override
@@ -21,28 +23,42 @@ class DropdownCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Container(
-        width:
-            double.infinity, // Ensures the container takes full available width
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: DropdownButtonHideUnderline(
-          // Removes the underline
-          child: DropdownButton<String>(
-            isExpanded: true, // Makes the dropdown expand to full width
-            value: selectedValue, // Current value
-            items: items
-                .map((e) => DropdownMenuItem<String>(
-                      value: e,
-                      child: Text(e),
-                    ))
-                .toList(),
-            onChanged: onChanged, // Call the callback function
-            hint: Text(hintText), // Customizable hint text
-          ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Display the labelText if provided
+            if (labelText != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4.0), // Add spacing
+                child: Text(
+                  labelText!,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            DropdownButtonHideUnderline(
+              child: DropdownButton<String>(
+                isExpanded: true, // Makes the dropdown expand to full width
+                value: selectedValue, // Current value
+                items: items
+                    .map(
+                      (e) => DropdownMenuItem<String>(
+                        value: e,
+                        child: Text(
+                          e,
+                        ),
+                      ),
+                    )
+                    .toList(),
+                onChanged: onChanged, // Call the callback function
+                hint: Text(hintText), // Customizable hint text
+              ),
+            ),
+          ],
         ),
       ),
     );

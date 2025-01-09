@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_counter/widgets/dropdown_card.dart';
+import 'package:stock_counter/widgets/dynamic_button.dart';
 
 class StockCounter extends StatefulWidget {
   const StockCounter({super.key});
@@ -11,9 +12,27 @@ class StockCounter extends StatefulWidget {
 class _StockCounterState extends State<StockCounter> {
   var _location = ['India', 'USA', 'UK', 'Canada', 'Australia'];
   var _items = ['Detonators', 'Booster'];
+  var _detonators = [
+    'Detonator 1',
+    'Detonator 2',
+    'Detonator 3',
+    'Detonator 4',
+    'Detonator 5',
+    'Detonator 6'
+  ];
+  var _boosters = [
+    'Booster 1',
+    'Booster 2',
+    'Booster 3',
+    'Booster 4',
+    'Booster 5',
+    'Booster 6',
+  ];
 
   String? _selectedCountry; // State to track the selected value
   String? _selectedItems;
+  String? _selectDetonaotors;
+  String? _selectedBoosters;
 
   @override
   Widget build(BuildContext context) {
@@ -67,37 +86,103 @@ class _StockCounterState extends State<StockCounter> {
             ),
             const SizedBox(height: 20),
             // Dropdown
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Column(
-                children: [
-                  DropdownCard(
-                    selectedValue: _selectedCountry,
-                    items: _location,
-                    onChanged: (value) {
-                      setState(() {
-                        _selectedCountry = value;
-                      });
-                    },
-                    hintText: 'Choose Country',
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  DropdownCard(
-                    selectedValue: _selectedItems,
-                    items: _items,
-                    onChanged: (value) {
-                      setState(() {
-                        _selectedItems = value;
-                      });
-                    },
-                    hintText: 'Choose Items',
-                  ),
-                  Row(
-                    children: [],
-                  )
-                ],
+            SingleChildScrollView(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Column(
+                  children: [
+                    DropdownCard(
+                      selectedValue: _selectedCountry,
+                      items: _location,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedCountry = value;
+                        });
+                      },
+                      hintText: 'Choose Country',
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    DropdownCard(
+                      selectedValue: _selectedItems,
+                      items: _items,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedItems = value;
+                        });
+                      },
+                      hintText: 'Choose Items',
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [Text("Select items"), Icon(Icons.add)],
+                    ),
+                    DropdownCard(
+                      selectedValue: _selectDetonaotors,
+                      items: _detonators,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectDetonaotors = value;
+                        });
+                      },
+                      hintText: 'Choose Items',
+                      labelText: "Detonators",
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    DropdownCard(
+                      selectedValue: _selectedBoosters,
+                      items: _boosters,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedBoosters = value;
+                        });
+                      },
+                      hintText: 'Choose Items',
+                      labelText: "Boosters",
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Enter Variables",
+                          textAlign: TextAlign.start,
+                        ),
+                      ],
+                    ),
+                    Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Container(
+                        width: double
+                            .infinity, // Ensures the Card takes up all available width
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: DynamicButton(
+                                      label: 'Detonators', onPressed: () {}),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
