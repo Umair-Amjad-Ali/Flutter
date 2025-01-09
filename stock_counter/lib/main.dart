@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stock_counter/screens/personal_info.dart';
+import 'package:stock_counter/screens/main_screens/stock_counter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +12,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        debugShowCheckedModeBanner: false, home: PersonalInfo());
+        debugShowCheckedModeBanner: false, home: StockCounter());
   }
 }

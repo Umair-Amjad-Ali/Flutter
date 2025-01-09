@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_counter/screens/main_screens/reports.dart';
+import 'package:stock_counter/screens/main_screens/stock_counter.dart';
 import 'package:stock_counter/screens/main_screens/usages.dart';
 import 'package:stock_counter/widgets/dynamic_button.dart';
 
@@ -201,11 +202,17 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             children: [
                               Expanded(
                                   child: DynamicButton(
-                                      label: "Edit Details",
+                                      label: "Save Details",
                                       onPressed: () {
                                         if (_formKey.currentState!.validate()) {
                                           // Save or update the information
-                                          print('Details updated!');
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const StockCounter(),
+                                            ),
+                                          );
                                         }
                                       }))
                             ],
