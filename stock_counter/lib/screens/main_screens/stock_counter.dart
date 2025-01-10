@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:stock_counter/screens/main_screens/usages.dart';
+import 'package:stock_counter/widgets/calculated_card.dart';
+import 'package:stock_counter/widgets/data_card.dart';
 import 'package:stock_counter/widgets/dropdown_card.dart';
 import 'package:stock_counter/widgets/dynamic_button.dart';
+import 'package:stock_counter/widgets/input_field.dart';
 
 class StockCounter extends StatefulWidget {
   const StockCounter({super.key});
@@ -39,55 +43,55 @@ class _StockCounterState extends State<StockCounter> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFEA4848),
-                      shape: BoxShape.rectangle,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFEA4848),
+                        shape: BoxShape.rectangle,
+                      ),
+                      child: const Icon(Icons.menu, color: Colors.white),
                     ),
-                    child: const Icon(Icons.menu, color: Colors.white),
-                  ),
-                  // Middle Text
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 35, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFEA4848),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Text(
-                      "Stock Counter",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    // Middle Text
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 35, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFEA4848),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Text(
+                        "Stock Counter",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
 
-                  //Profile Icon
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFEA4848),
-                      shape: BoxShape.circle,
+                    //Profile Icon
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFEA4848),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.person, color: Colors.white),
                     ),
-                    child: const Icon(Icons.person, color: Colors.white),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            // Dropdown
-            SingleChildScrollView(
-              child: Padding(
+              const SizedBox(height: 20),
+              // Dropdown
+              Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Column(
@@ -168,6 +172,7 @@ class _StockCounterState extends State<StockCounter> {
                             .infinity, // Ensures the Card takes up all available width
                         padding: const EdgeInsets.all(10),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
@@ -177,15 +182,141 @@ class _StockCounterState extends State<StockCounter> {
                                 ),
                               ],
                             ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 10),
+                                InputField(labelText: "Box per Stack "),
+                                const SizedBox(height: 10),
+                                InputField(labelText: "Stack of 6 "),
+                                const SizedBox(height: 10),
+                                InputField(labelText: "Single Box "),
+                                const SizedBox(height: 10),
+                                InputField(labelText: "Loose Units "),
+                              ],
+                            )
                           ],
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: DynamicButton(
+                          label: "Generate Count",
+                          onPressed: () {},
+                        )),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    DataCard(counredUnits: "4453", text: "Total Stock Count"),
+                    Row(
+                      children: [
+                        // First Card
+                        Expanded(
+                          child: CalculatedCard(
+                              headText: "Weight", calculatedText: "50.0 Kg"),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        // Second Card
+                        Expanded(
+                          child: CalculatedCard(
+                              headText: " Det Card",
+                              calculatedText: "4452 Meters"),
+                        ),
+                      ],
+                    ),
+                    Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Container(
+                        width: double.infinity,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 30),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Summary",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Stack 6",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Stack 6",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Stack 6",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: DynamicButton(
+                            label: "Save Stock",
+                            onPressed: () {
+                              // save stock
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Usages(),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -6,8 +6,10 @@ class Usages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Usages'),
+      body: SafeArea(
+        child: Column(
+          children: [],
+        ),
       ),
     );
   }

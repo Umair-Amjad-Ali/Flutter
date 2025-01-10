@@ -15,13 +15,13 @@ class DynamicButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      height: size.width * 0.12, // Dynamic height
+      height: size.width * 0.086, // Dynamic height
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFFEA4848),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(5),
           ),
         ),
         child: Text(
