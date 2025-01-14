@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_counter/screens/main_screens/usages.dart';
+import 'package:stock_counter/screens/personal_info.dart';
 import 'package:stock_counter/widgets/calculated_card.dart';
 import 'package:stock_counter/widgets/data_card.dart';
 import 'package:stock_counter/widgets/dropdown_card.dart';
@@ -78,14 +79,24 @@ class _StockCounterState extends State<StockCounter> {
                     ),
 
                     //Profile Icon
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Color(0xFFEA4848),
-                        shape: BoxShape.circle,
+                    InkWell(
+                      onTap: () {
+                        // Navigate to the next screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PersonalInfo()),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFEA4848),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(Icons.person, color: Colors.white),
                       ),
-                      child: const Icon(Icons.person, color: Colors.white),
-                    ),
+                    )
                   ],
                 ),
               ),
