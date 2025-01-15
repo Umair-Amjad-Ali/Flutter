@@ -1,4 +1,4 @@
-import 'package:book_reading/screens/splashscreens/users/signup_socials.dart';
+import 'package:book_reading/screens/users/signup_socials.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
