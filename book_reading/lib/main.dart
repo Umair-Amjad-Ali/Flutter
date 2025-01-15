@@ -1,4 +1,5 @@
 import 'package:book_reading/screens/splashscreens/splash_screen.dart';
+import 'package:book_reading/screens/splashscreens/users/signup_socials.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,9 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: SplashScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        home: SignupSocials());
   }
 }

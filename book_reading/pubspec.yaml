@@ -61,6 +61,8 @@ flutter:
     - assets/headphone.png
     - assets/strength-1.png
     - assets/strength-2.png
+    - assets/headphone-background.png
+    - assets/background.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
