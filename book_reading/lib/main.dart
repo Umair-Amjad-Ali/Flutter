@@ -1,4 +1,4 @@
-import 'package:book_reading/screens/welcome/welcome.dart';
+import 'package:book_reading/screens/welcome/goals_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,6 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home: Welcome());
+        home: GoalsScreen());
   }
 }

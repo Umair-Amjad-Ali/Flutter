@@ -1,3 +1,4 @@
+import 'package:book_reading/screens/welcome/gender_selection.dart';
 import 'package:book_reading/widgets/circular_icon.dart';
 import 'package:book_reading/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +84,14 @@ class SignupSocials extends StatelessWidget {
 
                         // Sign up with Google
                         CustomButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => GenderSelection(),
+                              ),
+                            );
+                          },
                           icon: Icons.g_translate,
                           label: "Sign up with Google",
                           backgroundColor: Colors.black,

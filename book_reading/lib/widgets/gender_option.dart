@@ -26,11 +26,16 @@ class GenderOption extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.grey[200], // Background color
-        border: Border.all(
-          color: isSelected ? Colors.black : Colors.transparent, // Border color
-          width: isSelected ? 1.0 : 0.0, // Border width
-        ),
         borderRadius: BorderRadius.circular(10), // Rounded corners
+        boxShadow: [
+          if (isSelected)
+            BoxShadow(
+              color: Colors.black, // Inner border color
+              offset: Offset(0, 0), // Shadow positioned at the center
+              blurRadius: 0, // No blur
+              spreadRadius: 1.0, // Border thickness
+            ),
+        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
