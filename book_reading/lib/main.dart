@@ -1,4 +1,5 @@
-import 'package:book_reading/screens/welcome/goals_screen.dart';
+import 'package:book_reading/screens/welcome/date_picker_screen.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,6 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home: GoalsScreen());
+        home: DatePickerScreen());
   }
 }
