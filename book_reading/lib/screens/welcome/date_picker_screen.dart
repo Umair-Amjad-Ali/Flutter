@@ -1,3 +1,4 @@
+import 'package:book_reading/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,6 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
   int booksPerYear = 456; // Based on the default value
 
   void updateBooksPerYear(int minutes) {
-    // Logic to calculate books per year (adjust as needed)
     setState(() {
       selectedMinutes = minutes;
       booksPerYear = (minutes * 456 ~/ 20); // Example formula
@@ -26,102 +26,114 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              // Title text
-              Text(
-                "How much will you read each day?",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final screenHeight = constraints.maxHeight;
+            final screenWidth = constraints.maxWidth;
 
-              // Container for Date Picker and Books Per Year
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(
-                  color: Colors.grey[100], // Background color for emphasis
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    // Cupertino Picker for minutes
-                    SizedBox(
-                      height: 150,
-                      child: CupertinoPicker(
-                        scrollController: FixedExtentScrollController(
-                            initialItem: selectedMinutes - 1),
-                        itemExtent: 32.0,
-                        onSelectedItemChanged: (index) {
-                          int minutes =
-                              index + 1; // Offset by 1 for 1-based index
-                          updateBooksPerYear(minutes);
-                        },
-                        children: List<Widget>.generate(60, (index) {
-                          return Center(
-                            child: Text(
-                              "${index + 1} min",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          );
-                        }),
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  // Title text
+                  Padding(
+                    padding: EdgeInsets.only(top: screenHeight * 0.05),
+                    child: Text(
+                      "How much will you read each day?",
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.03,
+                        fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
+                  ),
 
-                    // Spacer between Picker and Books Per Year display
-                    SizedBox(height: 50),
-
-                    // Books per year display
-                    Column(
+                  // Container for Date Picker and Books Per Year
+                  Container(
+                    padding:
+                        EdgeInsets.symmetric(vertical: screenHeight * 0.03),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          "$booksPerYear",
-                          style: TextStyle(
-                            fontSize: 48,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blueAccent,
+                        // Cupertino Picker for minutes
+                        SizedBox(
+                          height: screenHeight * 0.25,
+                          child: CupertinoPicker(
+                            scrollController: FixedExtentScrollController(
+                                initialItem: selectedMinutes - 1),
+                            itemExtent: screenHeight * 0.04,
+                            onSelectedItemChanged: (index) {
+                              int minutes = index + 1; // Offset by 1
+                              updateBooksPerYear(minutes);
+                            },
+                            children: List<Widget>.generate(60, (index) {
+                              return Center(
+                                child: Text(
+                                  "${index + 1} min",
+                                  style:
+                                      TextStyle(fontSize: screenHeight * 0.03),
+                                ),
+                              );
+                            }),
                           ),
                         ),
-                        Text(
-                          "Books per year",
-                          style: TextStyle(fontSize: 18, color: Colors.grey),
+
+                        // Books per year display
+                        SizedBox(height: screenHeight * 0.03), // Spacer
+                        Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: screenWidth * 0.05,
+                              ),
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 226, 226, 226),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Text(
+                                "$booksPerYear",
+                                style: TextStyle(
+                                    fontSize: screenHeight * 0.04,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            SizedBox(
+                              height: screenHeight * 0.01,
+                            ),
+                            Text(
+                              "Books per year",
+                              style: TextStyle(
+                                fontSize: screenHeight * 0.02,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-
-              // Spacer to add space above the button
-              SizedBox(height: 50),
-
-              // Continue button
-              ElevatedButton(
-                onPressed: () {
-                  // Action for the Continue button
-                  print("Selected Minutes: $selectedMinutes");
-                  print("Books per Year: $booksPerYear");
-                },
-                style: ElevatedButton.styleFrom(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 12.0, horizontal: 32.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                ),
-                child: Text(
-                  "Continue",
-                  style: TextStyle(fontSize: 18),
-                ),
+
+                  // Custom button with larger spacing
+                  Padding(
+                    padding: EdgeInsets.only(top: screenHeight * 0.05),
+                    child: CustomButton(
+                      onPressed: () {
+                        print("Selected Minutes: $selectedMinutes");
+                        print("Books per Year: $booksPerYear");
+                      },
+                      label: "Continue",
+                      backgroundColor: Colors.black,
+                      textColor: Colors.white,
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
