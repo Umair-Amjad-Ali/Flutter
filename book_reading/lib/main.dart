@@ -1,4 +1,4 @@
-import 'package:book_reading/screens/welcome/date_picker_screen.dart';
+import 'package:book_reading/screens/welcome/gender_selection.dart';
 import 'package:book_reading/screens/welcome/time_selection_screen.dart';
 
 import 'package:flutter/material.dart';

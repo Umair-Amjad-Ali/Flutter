@@ -25,8 +25,11 @@ class GenderOption extends StatelessWidget {
         horizontal: screenWidth * 0.05,
       ),
       decoration: BoxDecoration(
-        color: Colors.grey[200], // Background color
+        color: const Color.fromARGB(255, 248, 245, 245), // Background color
         borderRadius: BorderRadius.circular(10), // Rounded corners
+        border: Border.all(
+          color: Colors.grey.shade300, // Border color
+        ),
         boxShadow: [
           if (isSelected)
             BoxShadow(
