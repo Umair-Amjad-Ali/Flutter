@@ -1,5 +1,4 @@
-import 'package:book_reading/screens/welcome/gender_selection.dart';
-import 'package:book_reading/screens/welcome/time_selection_screen.dart';
+import 'package:book_reading/screens/welcome/agree_statement.dart';
 
 import 'package:flutter/material.dart';
 
@@ -16,6 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home: TimeSelectionScreen());
+        home: AgreeStatementScreen());
   }
 }
