@@ -1,3 +1,4 @@
+import 'package:book_reading/screens/welcome/personalized_screen.dart';
 import 'package:book_reading/widgets/age_option.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,8 @@ class AgreeStatementScreen extends StatefulWidget {
 
 class _AgreeStatementScreenState extends State<AgreeStatementScreen> {
   String? _selectedYesOrNo;
-  // List of container textsa
+
+  // List of container texts
   final List<String> containerTexts = [
     "Do you find it hard to stay focused on your goals?",
     "Are you feeling stuck and unsure about your next steps?",
@@ -25,6 +27,15 @@ class _AgreeStatementScreenState extends State<AgreeStatementScreen> {
       setState(() {
         currentIndex++;
       });
+    } else {
+      // Navigate to another screen when on the last question
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              const PersonalizingScreen(), // Replace with your screen
+        ),
+      );
     }
   }
 
@@ -39,33 +50,42 @@ class _AgreeStatementScreenState extends State<AgreeStatementScreen> {
             final screenHeight = constraints.maxHeight;
 
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+              padding: EdgeInsets.symmetric(
+                horizontal: screenWidth * 0.05,
+                vertical: screenHeight * 0.05,
+              ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // Main Title
-                  Column(
-                    children: [
-                      Text(
-                        "Do you agree with the statement below?",
-                        style: TextStyle(
-                          fontSize: screenHeight * 0.03,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
+                  Text("Do you agree with the statement below?",
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.03,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(height: screenHeight * 0.01),
-                    ],
-                  ),
+                      textAlign: TextAlign.center),
+                  SizedBox(height: screenHeight * 0.12),
 
-                  // Statement Container
+                  // Statement Card
                   Card(
-                    elevation: 4.0,
+                    elevation: 2.0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0),
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.all(screenWidth * 0.05),
+                    shadowColor: Colors.lightBlue.withOpacity(0.5),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.lightBlue.withOpacity(0.3),
+                            blurRadius: 6.0,
+                            spreadRadius: 2.0,
+                          ),
+                        ],
+                      ),
+                      padding: EdgeInsets.all(screenWidth * 0.035),
                       child: Text(
                         containerTexts[currentIndex],
                         style: TextStyle(
@@ -76,23 +96,47 @@ class _AgreeStatementScreenState extends State<AgreeStatementScreen> {
                       ),
                     ),
                   ),
+                  SizedBox(height: screenHeight * 0.05),
 
                   // Yes and No Buttons
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      // No Button
-
-                      AgeOption(
-                          label: "No",
-                          isSelected: _selectedYesOrNo == "No",
-                          screenWidth: screenWidth,
-                          screenHeight: screenHeight,
-                          onTap: () {})
-
-                      // Yes Button
-                    ],
-                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: GridView.count(
+                        shrinkWrap: true,
+                        crossAxisCount: 2,
+                        crossAxisSpacing: screenWidth * 0.05,
+                        mainAxisSpacing: screenHeight * 0.02,
+                        childAspectRatio: 3, // Adjusted for button consistency
+                        children: [
+                          AgeOption(
+                            label: "Yes",
+                            isSelected: _selectedYesOrNo == "Yes",
+                            screenWidth: screenWidth,
+                            screenHeight: screenHeight,
+                            onTap: () {
+                              setState(() {
+                                _selectedYesOrNo = "Yes";
+                                onSelection("Yes");
+                              });
+                            },
+                          ),
+                          AgeOption(
+                            label: "No",
+                            isSelected: _selectedYesOrNo == "No",
+                            screenWidth: screenWidth,
+                            screenHeight: screenHeight,
+                            onTap: () {
+                              setState(() {
+                                _selectedYesOrNo = "No";
+                                onSelection("No");
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
             );

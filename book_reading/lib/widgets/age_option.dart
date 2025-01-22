@@ -33,7 +33,7 @@ class AgeOption extends StatelessWidget {
           border: Border.all(
             color: isSelected
                 ? const Color.fromARGB(255, 16, 16, 16)
-                : Colors.transparent,
+                : const Color.fromARGB(255, 70, 68, 68),
             width: isSelected ? 1.0 : 0.0,
           ),
           borderRadius: BorderRadius.circular(10),
