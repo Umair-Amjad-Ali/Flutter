@@ -1,7 +1,4 @@
 import 'package:book_reading/screens/welcome/agree_statement.dart';
-import 'package:book_reading/screens/welcome/date_picker_screen.dart';
-import 'package:book_reading/screens/welcome/limited_offer_screen.dart';
-import 'package:book_reading/screens/welcome/personalized_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -18,6 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home: DatePickerScreen());
+        home: AgreeStatementScreen());
   }
 }
