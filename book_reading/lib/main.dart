@@ -1,4 +1,4 @@
-import 'package:book_reading/screens/welcome/limited_offer_screen.dart';
+import 'package:book_reading/screens/mainui/book_details_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -15,6 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home: LimitedOfferScreen());
+        home: BookDetailsScreen());
   }
 }

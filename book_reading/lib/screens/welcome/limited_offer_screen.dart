@@ -1,3 +1,4 @@
+import 'package:book_reading/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class LimitedOfferScreen extends StatelessWidget {
@@ -6,7 +7,7 @@ class LimitedOfferScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFF8FEFF),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -40,7 +41,7 @@ class LimitedOfferScreen extends StatelessWidget {
                           height: screenHeight * 0.25, // Responsive height
                           fit: BoxFit.contain,
                         ),
-                        SizedBox(height: screenHeight * 0.04),
+                        SizedBox(height: screenHeight * 0.03),
 
                         // Main content
                         Column(
@@ -52,11 +53,10 @@ class LimitedOfferScreen extends StatelessWidget {
                                   TextSpan(
                                     text: "87",
                                     style: TextStyle(
-                                      fontSize: screenHeight *
-                                          0.07, // Responsive font size
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.red,
-                                    ),
+                                        fontSize: screenHeight *
+                                            0.07, // Responsive font size
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFFFF0000)),
                                   ),
                                   TextSpan(
                                     text: "% OFF",
@@ -70,14 +70,53 @@ class LimitedOfferScreen extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: screenHeight * 0.02),
-                            Text(
-                              "Get Premium at 22,600 PKR  2,750 PKR\nfor your first year!",
-                              style: TextStyle(
-                                fontSize: screenHeight * 0.02,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black,
-                              ),
+                            RichText(
                               textAlign: TextAlign.center,
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: "Get Premimum at ",
+                                    style: TextStyle(
+                                      fontSize: screenHeight * 0.02,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: "22,600 PKR ",
+                                    style: TextStyle(
+                                      fontSize: screenHeight * 0.02,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                      decoration: TextDecoration
+                                          .lineThrough, // Strikethrough effect
+                                      decorationColor:
+                                          Colors.black, // Matches text color
+                                      decorationThickness:
+                                          1.5, // Adjust the thickness of the line
+                                      height:
+                                          1.2, // Ensures proper alignment of the line
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: " 2,750 PKR",
+                                    style: TextStyle(
+                                      fontSize: screenHeight * 0.025,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors
+                                          .red, // Red color for the discounted price
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: "\nfor your first year!",
+                                    style: TextStyle(
+                                      fontSize: screenHeight * 0.02,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             SizedBox(height: screenHeight * 0.02),
                             Text(
@@ -89,28 +128,13 @@ class LimitedOfferScreen extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: screenHeight * 0.02),
-                            ElevatedButton(
-                              onPressed: () {
-                                // Handle subscribe now action
-                              },
-                              style: ElevatedButton.styleFrom(
+                            CustomButton(
+                                onPressed: () {},
+                                label: "Subscribe Now",
                                 backgroundColor: Colors.black,
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: screenWidth * 0.08,
-                                  vertical: screenHeight * 0.02,
-                                ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                              ),
-                              child: Text(
-                                "Subscribe Now",
-                                style: TextStyle(
-                                  fontSize: screenHeight * 0.02,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
+                                textColor: Colors.white,
+                                screenWidth: screenWidth,
+                                screenHeight: screenHeight)
                           ],
                         ),
                       ],
