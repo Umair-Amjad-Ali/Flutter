@@ -154,6 +154,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
           );
         },
       ),
+      // Bottom Navigation Bar
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: screenWidthGlobal * 0.025,
