@@ -21,7 +21,7 @@ class SecondaryBottomNavbar extends StatelessWidget {
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
         padding: EdgeInsets.symmetric(
-            vertical: screenHeightGlobal * 0.05,
+            vertical: screenHeightGlobal * 0.045,
             horizontal: screenWidthGlobal * 0.05),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),

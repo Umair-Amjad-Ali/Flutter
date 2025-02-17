@@ -147,7 +147,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                         )
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
