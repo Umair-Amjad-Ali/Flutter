@@ -9,14 +9,13 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: "My Player",
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.onBoardingScreen,
+      initialRoute: AppRoutes.signupScreen,
       getPages: AppPages.pages,
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_player/views/common/elevated_button.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -62,45 +63,12 @@ class OnBoardingScreen extends StatelessWidget {
                   SizedBox(
                     width: screenWidth * 0.6, // 60% of screen width
                     height: screenHeight * 0.06, // 6% of screen height
-                    child: ElevatedButton(
+                    child: CustomElevatedButton(
+                      text: "Get Started",
                       onPressed: () {
-                        Get.toNamed('/SignupScreen'); // Navigate to home screen
+                        Get.toNamed(
+                            '/SignupScreen'); // Navigate to Signup Screen
                       },
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.zero, // Remove default padding
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        backgroundColor:
-                            Colors.transparent, // Transparent background
-                        shadowColor: Colors.transparent, // Remove shadow
-                      ),
-                      child: Ink(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color(0xFF9A6424),
-                              Color(0xFFE5AD45)
-                            ], // Gold Gradient
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                          ),
-                        ),
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(
-                              vertical: screenHeight * 0.015),
-                          child: const Text(
-                            'Get Started',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
                 ],
