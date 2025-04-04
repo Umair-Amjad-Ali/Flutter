@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:my_player/views/common/custom_input_filed.dart';
 import 'package:my_player/views/common/elevated_button.dart';
-import '../../controllers/auth_controller.dart';
+import 'package:my_player/views/controllers/auth_controller.dart';
+import 'package:get/get.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+class SigninScreen extends StatelessWidget {
+  const SigninScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class SignUpScreen extends StatelessWidget {
                 SizedBox(height: screenHeight * 0.004),
                 GestureDetector(
                   onTap: () {},
-                  child: const Text('Sign IN',
+                  child: const Text('Sign Up',
                       style: TextStyle(
                         color: Color(0xFFE5AD45),
                         fontWeight: FontWeight.bold,
@@ -54,31 +54,13 @@ class SignUpScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomInputFiled(
-                          label: "Your Name",
-                          controller: controller.nameController,
-                          icon: Icons.person,
-                          keyboardType: TextInputType.text,
-                          hintText: "Enter your Name",
-                          validator: (value) {
-                            if (!GetUtils.isUsername(value!)) {
-                              return "Enter a valid name";
-                            }
-                            return null;
-                          },
-                        ),
-                        SizedBox(height: screenHeight * 0.02),
-                        CustomInputFiled(
                           label: "Your Email",
                           controller: controller.emailController,
                           icon: Icons.email,
-                          keyboardType: TextInputType.emailAddress,
-                          hintText: "Enter your Email",
-                          validator: ((value) {
-                            if (!GetUtils.isEmail(value!)) {
-                              return "Enter a valid email";
-                            }
-                            return null;
-                          }),
+                          keyboardType: TextInputType.text,
+                          validator: (value) => GetUtils.isEmail(value!)
+                              ? null
+                              : "Enter a valid email",
                         ),
                         SizedBox(height: screenHeight * 0.02),
                         Obx(
@@ -101,28 +83,7 @@ class SignUpScreen extends StatelessWidget {
                             },
                           ),
                         ),
-                        SizedBox(height: screenHeight * 0.02),
-                        Obx(
-                          () => CustomInputFiled(
-                            label: "Confirm Password",
-                            controller: controller.confirmPasswordController,
-                            icon: Icons.key,
-                            isPassword: true,
-                            hintText: "Password",
-                            isPasswordVisibility:
-                                controller.isConfirmPasswordVisible.value,
-                            toggleVisibility:
-                                controller.toggledConfirmPasswordVisibility,
-                            keyboardType: TextInputType.text,
-                            validator: (value) {
-                              if (value != controller.passwordController.text) {
-                                return "Passwords do not match";
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
-                        SizedBox(height: screenHeight * 0.04),
+                        SizedBox(height: screenHeight * 0.13),
                         Center(
                           child: SizedBox(
                             width: screenWidth * 0.6,

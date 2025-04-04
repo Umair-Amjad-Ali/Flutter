@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:my_player/views/screens/authetication/signin_screen.dart';
 import 'package:my_player/views/screens/authetication/signup_screen.dart';
 import 'package:my_player/views/screens/on_boarding_screen.dart';
 import 'app_routes.dart';
@@ -12,6 +13,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.signupScreen,
       page: () => const SignUpScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.signinScreen,
+      page: () => const SigninScreen(),
     ),
   ];
 }

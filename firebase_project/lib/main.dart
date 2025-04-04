@@ -1,7 +1,5 @@
+import 'package:firebase_project/views/authentication/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:my_player/views/routes/app_pages.dart';
-import 'package:my_player/views/routes/app_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,14 +7,17 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: "My Player",
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.signinScreen,
-      getPages: AppPages.pages,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      home: SignupScreen(),
     );
   }
 }

@@ -9,17 +9,20 @@ class CustomInputFiled extends StatelessWidget {
   final VoidCallback? toggleVisibility;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
+  final String hintText; // New: Hint Text
 
-  const CustomInputFiled(
-      {super.key,
-      required this.label,
-      required this.controller,
-      required this.icon,
-      this.isPassword = false,
-      this.isPasswordVisibility = false,
-      this.toggleVisibility,
-      required this.keyboardType,
-      required this.validator});
+  const CustomInputFiled({
+    super.key,
+    required this.label,
+    required this.controller,
+    required this.icon,
+    this.isPassword = false,
+    this.isPasswordVisibility = false,
+    this.toggleVisibility,
+    required this.keyboardType,
+    required this.validator,
+    this.hintText = "", // Default empty hint text
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +38,13 @@ class CustomInputFiled extends StatelessWidget {
         TextFormField(
           controller: controller,
           obscureText: isPassword ? isPasswordVisibility : false,
+          obscuringCharacter:
+              isPassword ? '*' : '•', // New: Show '*' instead of '•'
           style: const TextStyle(color: Colors.white),
           keyboardType: keyboardType,
           decoration: InputDecoration(
+            hintText: hintText, // New: Set hint text
+            hintStyle: TextStyle(color: Colors.white70), // Style hint text
             filled: true,
             fillColor: const Color(0xFF9A6424),
             prefixIcon: Icon(
@@ -56,7 +63,7 @@ class CustomInputFiled extends StatelessWidget {
                   )
                 : null,
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide.none,
             ),
           ),
